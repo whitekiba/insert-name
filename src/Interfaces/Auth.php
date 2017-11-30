@@ -1,4 +1,4 @@
-<?php namespace Fluxnet\Interfaces;
+<?php namespace InsertName\Interfaces;
 
 interface Auth {
 	//Standardkram.

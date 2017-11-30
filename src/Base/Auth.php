@@ -1,4 +1,4 @@
-<?php namespace Fluxnet\Base;
+<?php namespace InsertName\Base;
 /**
  * Created by PhpStorm.
  * User: whitekiba
@@ -6,7 +6,7 @@
  * Time: 10:08
  */
 
-use Fluxnet\DB;
+use InsertName\DB;
 
 abstract class Auth {
 	static private $_instances = array();
@@ -17,8 +17,8 @@ abstract class Auth {
 	 * Auth constructor.
 	 */
 	function __construct() {
-		if (isset($_SESSION["fluxnet_username"])) {
-			$this->username = $_SESSION["fluxnet_username"];
+		if (isset($_SESSION["InsertName_username"])) {
+			$this->username = $_SESSION["InsertName_username"];
 		}
 	}
 
@@ -76,8 +76,8 @@ abstract class Auth {
 	        @session_start();
         }
 
-		$_SESSION['fluxnet_username'] = $username;
-	    $_SESSION['fluxnet_authenticated'] = true;
+		$_SESSION['InsertName_username'] = $username;
+	    $_SESSION['InsertName_authenticated'] = true;
 		return true;
 	}
 
@@ -85,7 +85,7 @@ abstract class Auth {
 	 * @return bool
 	 */
 	protected function checkSession() {
-		return (isset($_SESSION['fluxnet_authenticated'])) ? false : true;
+		return (isset($_SESSION['InsertName_authenticated'])) ? false : true;
 	}
 
 	/**

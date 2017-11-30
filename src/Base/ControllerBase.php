@@ -1,8 +1,8 @@
-<?php namespace Fluxnet\Base;
+<?php namespace InsertName\Base;
 
 use Twig_Environment;
 use Twig_Loader_Filesystem;
-use Fluxnet\Factories\AuthFactory;
+use InsertName\Factories\AuthFactory;
 
 abstract class ControllerBase {
     protected $variables = array();

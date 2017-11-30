@@ -1,7 +1,7 @@
-<?php namespace Fluxnet\Factories;
+<?php namespace InsertName\Factories;
 
-use Fluxnet\Interfaces\Controller;
-use Fluxnet\Controllers\{
+use InsertName\Interfaces\Controller;
+use InsertName\Controllers\{
     Fatal, Notfound, Index
 };
 

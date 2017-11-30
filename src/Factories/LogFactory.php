@@ -1,7 +1,7 @@
-<?php namespace Fluxnet\Factories;
+<?php namespace InsertName\Factories;
 
 use App\Config;
-use Fluxnet\Log\Dummy;
+use InsertName\Log\Dummy;
 use Log;
 
 class LogFactory {

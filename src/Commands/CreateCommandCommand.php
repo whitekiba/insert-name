@@ -1,4 +1,4 @@
-<?php namespace Fluxnet\Commands;
+<?php namespace InsertName\Commands;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -6,7 +6,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Nette\PhpGenerator\PhpNamespace;
-use Fluxnet\File\PhpFile;
+use InsertName\File\PhpFile;
 
 class CreateCommandCommand extends Command {
     protected function configure() {

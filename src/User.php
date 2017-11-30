@@ -1,4 +1,4 @@
-<?php namespace Fluxnet;
+<?php namespace InsertName;
 
 /**
  * Created by PhpStorm.

@@ -1,4 +1,4 @@
-<?php namespace Fluxnet\Base;
+<?php namespace InsertName\Base;
 
 use App\Config;
 

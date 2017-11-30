@@ -1,4 +1,4 @@
-<?php namespace Fluxnet\Base;
+<?php namespace InsertName\Base;
 
 abstract class SecurityBase {
     protected $_log;

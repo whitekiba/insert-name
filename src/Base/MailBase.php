@@ -1,4 +1,4 @@
-<?php namespace Fluxnet\Base;
+<?php namespace InsertName\Base;
 
 class MailBase extends TemplateBase {
 	protected $template_prefix = "email_", $email, $name = false, $attachment = false, $subject = 'Ihre neue Rechnung';

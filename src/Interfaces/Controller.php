@@ -1,4 +1,4 @@
-<?php namespace Fluxnet\Interfaces;
+<?php namespace InsertName\Interfaces;
 
 interface Controller {
     public function render();

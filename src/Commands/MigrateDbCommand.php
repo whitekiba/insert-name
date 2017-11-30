@@ -1,9 +1,9 @@
-<?php namespace Fluxnet\Commands;
+<?php namespace InsertName\Commands;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Fluxnet\DB;
+use InsertName\DB;
 use App\Config;
 
 class MigrateDbCommand extends Command {

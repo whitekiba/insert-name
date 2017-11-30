@@ -1,4 +1,4 @@
-<?php namespace Fluxnet\Commands;
+<?php namespace InsertName\Commands;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -6,7 +6,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Nette\PhpGenerator\PhpNamespace;
-use Fluxnet\File\PhpFile;
+use InsertName\File\PhpFile;
 
 class CreateControllerCommand extends Command {
     protected function configure() {
@@ -33,12 +33,12 @@ class CreateControllerCommand extends Command {
         //Das ist immer App\Controllers
         $ns = new PhpNamespace("App\\Controllers");
 
-        $ns->addUse("Fluxnet\Base\ControllerBase")
-            ->addUse("Fluxnet\Interfaces\Controller", "IController");
+        $ns->addUse("InsertName\Base\ControllerBase")
+            ->addUse("InsertName\Interfaces\Controller", "IController");
 
         //Die Klasse bekommt den Namen des Parameters
         $class = $ns->addClass($input->getArgument("name"));
-        $class->setExtends("Fluxnet\Base\ControllerBase")
+        $class->setExtends("InsertName\Base\ControllerBase")
             ->setImplements(["App\Controllers\IController"]);
 
         //Beispielcode für den Fall dass wir mehr automatisiert haben wollen

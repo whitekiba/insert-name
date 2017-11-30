@@ -1,8 +1,8 @@
-<?php namespace Fluxnet\Auth;
+<?php namespace InsertName\Auth;
 
-use Fluxnet\Interfaces\Auth as IAuth;
-use Fluxnet\Base\Auth;
-use Fluxnet\LDAP;
+use InsertName\Interfaces\Auth as IAuth;
+use InsertName\Base\Auth;
+use InsertName\LDAP;
 
 /**
  * Class LdapAuth

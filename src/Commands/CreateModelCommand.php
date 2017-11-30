@@ -1,4 +1,4 @@
-<?php namespace Fluxnet\Commands;
+<?php namespace InsertName\Commands;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -6,8 +6,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Nette\PhpGenerator\PhpNamespace;
-use Fluxnet\File\PhpFile;
-use Fluxnet\DB;
+use InsertName\File\PhpFile;
+use InsertName\DB;
 
 class CreateModelCommand extends Command {
     protected function configure() {
@@ -34,10 +34,10 @@ class CreateModelCommand extends Command {
         //Namespace erzeugen.
         //Das ist immer App\Controllers
         $ns = new PhpNamespace("App\\Model");
-        $ns->addUse("Fluxnet\Base\BaseModel");
+        $ns->addUse("InsertName\Base\BaseModel");
 
         $class = $ns->addClass($this->generateClassName($input->getArgument("db_table")));
-        $class->setExtends("Fluxnet\Base\ControllerBase")
+        $class->setExtends("InsertName\Base\ControllerBase")
           ->setImplements(["App\Controllers\IController"]);
 
         //Wir iterieren über die Spalten die wir haben und erzeugen getter und setter

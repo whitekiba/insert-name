@@ -1,4 +1,4 @@
-<?php namespace Fluxnet\Base;
+<?php namespace InsertName\Base;
 abstract class ApiControllerBase extends ControllerBase {
     protected $override_twig;
     protected $template = "api_template.twig";

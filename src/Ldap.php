@@ -1,13 +1,13 @@
-<?php namespace Fluxnet;
+<?php namespace InsertName;
 
-use Fluxnet\Exception\FatalException;
+use InsertName\Exception\FatalException;
 
 /**
  * Class LDAP
  *
  * Don't use. It's ass
  *
- * @package Fluxnet
+ * @package InsertName
  */
 class LDAP {
 	private $authconn;

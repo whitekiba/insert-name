@@ -1,5 +1,5 @@
 <?php namespace App;
-use Fluxnet\Base\ConfigBase;
+use InsertName\Base\ConfigBase;
 
 /*
  * RENAME TO production.php

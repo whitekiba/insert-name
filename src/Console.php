@@ -1,7 +1,7 @@
-<?php namespace Fluxnet;
+<?php namespace InsertName;
 
 use Symfony\Component\Console\Application;
-use Fluxnet\Commands\{
+use InsertName\Commands\{
   CreateCommandCommand, CreateControllerCommand, CreateModelCommand, MigrateDbCommand, CreateInitialDbCommand
 };
 use Symfony\Component\Console\Command\Command;

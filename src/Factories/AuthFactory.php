@@ -1,7 +1,7 @@
-<?php namespace Fluxnet\Factories;
+<?php namespace InsertName\Factories;
 
 use App\Config;
-use Fluxnet\Auth\{Dummy, Ldap, Mysql};
+use InsertName\Auth\{Dummy, Ldap, Mysql};
 
 class AuthFactory {
 	public static function get() {

@@ -1,8 +1,8 @@
-<?php namespace Fluxnet\Controllers;
+<?php namespace InsertName\Controllers;
 
-use Fluxnet\Base\ControllerBase;
-use Fluxnet\DB;
-use Fluxnet\Interfaces\Controller as IController;
+use InsertName\Base\ControllerBase;
+use InsertName\DB;
+use InsertName\Interfaces\Controller as IController;
 
 class Index extends ControllerBase implements IController {
     protected $template = "index.twig";

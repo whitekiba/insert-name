@@ -1,9 +1,9 @@
-<?php namespace Fluxnet;
+<?php namespace InsertName;
 
-use Fluxnet\Controllers\Fatal;
-use Fluxnet\Exception\FatalException;
-use Fluxnet\Factories\ControllerFactory;
-use Fluxnet\Interfaces\Controller;
+use InsertName\Controllers\Fatal;
+use InsertName\Exception\FatalException;
+use InsertName\Factories\ControllerFactory;
+use InsertName\Interfaces\Controller;
 use Zend\Diactoros\ServerRequestFactory;
 use Aura\Router\RouterContainer;
 use App\Config;
@@ -13,7 +13,7 @@ use App\Config;
  *
  * The core framework application. Puts everything together.
  *
- * @package Fluxnet
+ * @package InsertName
  */
 class Application {
     /** @var \Zend\Diactoros\ServerRequest $request

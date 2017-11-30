@@ -1,4 +1,4 @@
-<?php namespace Fluxnet\Commands;
+<?php namespace InsertName\Commands;
 
 use Symfony\Component\Console\Command\Command;
 

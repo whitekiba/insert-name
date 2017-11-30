@@ -1,6 +1,6 @@
-<?php namespace Fluxnet\Base;
+<?php namespace InsertName\Base;
 
-use Fluxnet\Factories\LogFactory;
+use InsertName\Factories\LogFactory;
 
 /**
  * Class ConfigBase

@@ -1,12 +1,12 @@
-<?php namespace Fluxnet\Factories;
+<?php namespace InsertName\Factories;
 
 use App\Config;
-use Fluxnet\Auth\{Dummy, Ldap, Mysql};
+use InsertName\Auth\{Dummy, Ldap, Mysql};
 
 /**
  * Class CacheFactory
  *
- * @package Fluxnet\Factories
+ * @package InsertName\Factories
  */
 class CacheFactory {
     /**
@@ -14,7 +14,7 @@ class CacheFactory {
      * @return bool
      */
     public static function get($class) {
-        if (class_exists("Fluxnet\\Cache\\".$class)) {
+        if (class_exists("InsertName\\Cache\\".$class)) {
             return new $class;
         }
 

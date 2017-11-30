@@ -1,7 +1,7 @@
-<?php namespace Fluxnet\Cache;
+<?php namespace InsertName\Cache;
 
-use Fluxnet\Factories\LogFactory;
-use Fluxnet\Interfaces\Cache;
+use InsertName\Factories\LogFactory;
+use InsertName\Interfaces\Cache;
 
 class Redis implements Cache {
     private $redis_online = false, $redis, $_config;

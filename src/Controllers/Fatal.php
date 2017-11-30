@@ -1,8 +1,8 @@
-<?php namespace Fluxnet\Controllers;
+<?php namespace InsertName\Controllers;
 
-use Fluxnet\Base\ControllerBase;
-use Fluxnet\Exception\FatalException;
-use Fluxnet\Interfaces\Controller;
+use InsertName\Base\ControllerBase;
+use InsertName\Exception\FatalException;
+use InsertName\Interfaces\Controller;
 
 class Fatal extends ControllerBase implements Controller {
     /** @var FatalException */

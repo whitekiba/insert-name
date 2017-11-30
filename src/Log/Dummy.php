@@ -1,4 +1,4 @@
-<?php namespace Fluxnet\Log;
+<?php namespace InsertName\Log;
 
 /**
  * Class LogDummy

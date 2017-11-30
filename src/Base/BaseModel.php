@@ -1,6 +1,6 @@
-<?php namespace Fluxnet\Base;
+<?php namespace InsertName\Base;
 
-use Fluxnet\Exception\FatalException;
+use InsertName\Exception\FatalException;
 
 abstract class BaseModel {
 	protected $_multi = false, $_multi_index = 0; //multi index defaults to 0. we need predictable errors

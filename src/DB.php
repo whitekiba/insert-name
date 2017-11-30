@@ -1,7 +1,7 @@
-<?php namespace Fluxnet;
+<?php namespace InsertName;
 
 use App\Config;
-use Fluxnet\Exception\FatalException;
+use InsertName\Exception\FatalException;
 use mysqli;
 
 /**

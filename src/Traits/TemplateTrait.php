@@ -1,6 +1,6 @@
-<?php namespace Fluxnet\Traits;
+<?php namespace InsertName\Traits;
 
-use Fluxnet\Base\TemplateBase;
+use InsertName\Base\TemplateBase;
 
 trait TemplateTrait {
     /** @var TemplateBase */

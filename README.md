@@ -8,8 +8,8 @@ app/Controllers/Hello.php
 ```php
 <?php namespace App\Controllers;
  
-use Fluxnet\Base\ControllerBase;
-use Fluxnet\Interfaces\Controller as IController;
+use InsertName\Base\ControllerBase;
+use InsertName\Interfaces\Controller as IController;
 
 class Hello extends ControllerBase implements IController {
  public function worldAction() {

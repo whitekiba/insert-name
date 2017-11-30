@@ -1,7 +1,7 @@
-<?php namespace Fluxnet\Controllers;
+<?php namespace InsertName\Controllers;
 
-use Fluxnet\Base\ControllerBase;
-use Fluxnet\Interfaces\Controller as IController;
+use InsertName\Base\ControllerBase;
+use InsertName\Interfaces\Controller as IController;
 
 class Notfound extends ControllerBase implements IController {
     protected $auth_only = false;

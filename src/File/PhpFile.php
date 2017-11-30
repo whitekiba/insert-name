@@ -1,6 +1,6 @@
-<?php namespace Fluxnet\File;
+<?php namespace InsertName\File;
 
-use Fluxnet\Base\File;
+use InsertName\Base\File;
 
 class PhpFile extends File {
     public function setContent($c) {

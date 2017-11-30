@@ -1,6 +1,6 @@
-<?php namespace Fluxnet\Base;
+<?php namespace InsertName\Base;
 
-use Fluxnet\Exception\FatalException;
+use InsertName\Exception\FatalException;
 
 class TemplateBase {
     protected $_log;

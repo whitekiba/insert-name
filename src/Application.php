@@ -30,12 +30,16 @@ class Application {
         $this->map->post("post_default", Config::getInstance()->get("path_prefix")."/{controller}/{action}");
     }
 
-    public function addRoute($route, $class, $action_param = "action") {
+    public function addRoute($route, $method, $class = false, $action_param = "action") {
         if (!strpos($route, $action_param) !== false) {
             return false;
         }
 
-        $route_name = $this->getRouteName($class);
+        if ($class) {
+            $route_name = $this->getRouteName($class);
+        } else {
+            $route_name = uniqid("custom_".$method."_");
+        }
 
         /*
          * TODO: Überlegen wie das sauber abstrahiert werden kann
@@ -43,8 +47,16 @@ class Application {
          * Wir haben zwar die generischen Routen aber die sind unflexibel und einige möchten das vermutlich nicht
          */
 
-        $this->map->get($route_name, Config::getInstance()->get("path_prefix").$route)->wildcard("other");
+        if ($method == "get") {
+            $this->map->get($route_name, Config::getInstance()->get("path_prefix") . $route)->wildcard("other");
+        } elseif ($method == "post") {
+            $this->map->post($route_name, Config::getInstance()->get("path_prefix") . $route)->wildcard("other");
+        } else {
+            return false;
+        }
+
         $this->routes[$route_name]["action_param"] = $action_param;
+        $this->routes[$route_name]["method"] = $method;
 
         return true;
     }
@@ -92,7 +104,10 @@ class Application {
                     $controller->post($this->route->attributes["action"]);
                     break;
                 default:
-                    $controller->get($this->routes[$this->route->name]["action_param"]);
+                    $method = $this->routes[$this->route->name]["method"];
+                    $action = $this->route->attributes[$this->routes[$this->route->name]["action_param"]];
+                    //dynamically call the matching method
+                    $controller->$method($action);
             }
 
             return $controller->render();

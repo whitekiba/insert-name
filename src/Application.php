@@ -19,19 +19,15 @@ class Application {
     /** @var \Zend\Diactoros\ServerRequest $request
      * @var Controller $controller
      */
-    private $request, $map, $route, $controller, $routes = array();
+    private $request, $map, $route, $routes = array(), $routerContainer;
     function __construct() {
         $this->request = ServerRequestFactory::fromGlobals($_SERVER, $_GET, $_POST, $_COOKIE, $_FILES);
-        $routerContainer = new RouterContainer();
-        $this->map = $routerContainer->getMap();
+        $this->routerContainer = new RouterContainer();
+        $this->map = $this->routerContainer->getMap();
 
         $this->map->get("home", Config::getInstance()->get("path_prefix")."/");
-        $this->map->get("get_default", Config::getInstance()->get("path_prefix")."/{controller}/{action}")->wildcard("other");
-        $this->map->post("post_default", Config::getInstance()->get("path_prefix")."/{controller}/{action}")->wildcard("other");
-
-        //Matcher holen und request matchen
-        $matcher = $routerContainer->getMatcher();
-        $this->route = $matcher->match($this->request);
+        $this->map->get("get_default", Config::getInstance()->get("path_prefix")."/{controller}/{action}");
+        $this->map->post("post_default", Config::getInstance()->get("path_prefix")."/{controller}/{action}");
     }
 
     public function addRoute($route, $class, $action_param = "action") {
@@ -47,7 +43,7 @@ class Application {
          * Wir haben zwar die generischen Routen aber die sind unflexibel und einige möchten das vermutlich nicht
          */
 
-        $this->map->get($route_name, $route);
+        $this->map->get($route_name, Config::getInstance()->get("path_prefix").$route)->wildcard("other");
         $this->routes[$route_name]["action_param"] = $action_param;
 
         return true;
@@ -60,6 +56,10 @@ class Application {
      * @return mixed
      */
     public function run() {
+        //Matcher holen und request matchen
+        $matcher = $this->routerContainer->getMatcher();
+        $this->route = $matcher->match($this->request);
+
         //404 handler
         if (!$this->route) {
             return ControllerFactory::get("notfound", $this->request)->render();
@@ -111,6 +111,7 @@ class Application {
 
     private function getRouteName($controller_name) {
         $controller_name = rtrim($controller_name, "Controller");
+        $controller_name = substr($controller_name, strrpos($controller_name, '\\') + 1);
         return "custom_".strtolower($controller_name);
     }
 }

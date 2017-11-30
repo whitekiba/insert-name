@@ -20,7 +20,7 @@ abstract class BaseModel {
 		$this->_log = LogFactory::get(strtolower(get_called_class()));
 
 		if (!$this->db_table)
-			$this->db_table = $this->tableName();
+			$this->db_table = self::getDbTableName();
 	}
 
 	/**
@@ -262,6 +262,7 @@ abstract class BaseModel {
      */
 	public static function getDbTableName() {
         $class_name = get_called_class();
+        $class_name = substr($class_name, strrpos($class_name, '\\') + 1);
 
         preg_match_all('/[A-Z]/', $class_name, $matches, PREG_OFFSET_CAPTURE);
 

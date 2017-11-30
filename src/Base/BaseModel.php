@@ -1,6 +1,8 @@
 <?php namespace InsertName\Base;
 
 use InsertName\Exception\FatalException;
+use InsertName\DB;
+use InsertName\Factories\LogFactory;
 
 abstract class BaseModel {
 	protected $_multi = false, $_multi_index = 0; //multi index defaults to 0. we need predictable errors

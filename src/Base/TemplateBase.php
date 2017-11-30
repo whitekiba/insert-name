@@ -1,6 +1,7 @@
 <?php namespace InsertName\Base;
 
 use InsertName\Exception\FatalException;
+use InsertName\Factories\LogFactory;
 
 class TemplateBase {
     protected $_log;

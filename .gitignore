@@ -1,0 +1,7 @@
+.idea/
+vendor/
+composer.lock
+
+#Framework Stuff
+log/app.log
+config/production.php

@@ -1,0 +1,17 @@
+{
+  "require": {
+    "pear/log": ">=1.13",
+    "aura/router": "*",
+    "twig/twig": "2.*",
+    "zendframework/zend-diactoros": "*",
+    "aura/autoload": "*",
+    "symfony/console": "*",
+    "nette/php-generator": "*"
+  },
+  "require-dev": {
+    "theseer/phpdox": "*",
+    "phpunit/phpunit": "6.*",
+    "phpunit/dbunit": "*",
+    "phpstan/phpstan": "*"
+  }
+}

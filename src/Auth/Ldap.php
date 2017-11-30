@@ -2,12 +2,12 @@
 
 use InsertName\Interfaces\Auth as IAuth;
 use InsertName\Base\Auth;
-use InsertName\LDAP;
+use InsertName\LDAP as LdapConn;
 
 /**
  * Class LdapAuth
  */
-class LdapAuth extends Auth implements IAuth {
+class Ldap extends Auth implements IAuth {
 	private $_ldap;
 
 	/**
@@ -15,7 +15,7 @@ class LdapAuth extends Auth implements IAuth {
 	 */
 	function __construct() {
 		parent::__construct();
-		$this->_ldap = new LDAP();
+		$this->_ldap = new LdapConn();
 	}
 
 	/**

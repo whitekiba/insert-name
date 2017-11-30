@@ -2,8 +2,9 @@
 
 use InsertName\Interfaces\Auth as IAuth;
 use InsertName\Base\Auth;
+use InsertName\User;
 
-class MysqlAuth extends Auth implements IAuth {
+class Mysql extends Auth implements IAuth {
 
 	/**
 	 * @param $username

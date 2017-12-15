@@ -21,6 +21,8 @@ class Application {
      */
     private $request, $map, $route, $routes = array(), $routerContainer;
     function __construct() {
+        session_start();
+        
         $this->request = ServerRequestFactory::fromGlobals($_SERVER, $_GET, $_POST, $_COOKIE, $_FILES);
         $this->routerContainer = new RouterContainer();
         $this->map = $this->routerContainer->getMap();

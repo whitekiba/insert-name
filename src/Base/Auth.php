@@ -6,11 +6,9 @@
  * Time: 10:08
  */
 
-use InsertName\DB;
-
 abstract class Auth {
 	static private $_instances = array();
-	protected $online, $_db;
+	protected $online;
 	public $username;
 
 	/**

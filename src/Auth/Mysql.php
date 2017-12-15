@@ -3,8 +3,16 @@
 use InsertName\Interfaces\Auth as IAuth;
 use InsertName\Base\Auth;
 use InsertName\User;
+use InsertName\DB;
 
 class Mysql extends Auth implements IAuth {
+    protected $_db;
+
+    function __construct() {
+        $this->_db = DB::getInstance();
+
+        parent::__construct();
+    }
 
 	/**
 	 * @param $username

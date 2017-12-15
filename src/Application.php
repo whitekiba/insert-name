@@ -26,6 +26,7 @@ class Application {
         $this->map = $this->routerContainer->getMap();
 
         $this->map->get("home", Config::getInstance()->get("path_prefix")."/");
+        $this->map->get("controller_default_route", Config::getInstance()->get("path_prefix")."/{controller}");
         $this->map->get("get_default", Config::getInstance()->get("path_prefix")."/{controller}/{action}");
         $this->map->post("post_default", Config::getInstance()->get("path_prefix")."/{controller}/{action}");
     }
@@ -102,6 +103,8 @@ class Application {
                     break;
                 case 'post_default':
                     $controller->post($this->route->attributes["action"]);
+                    break;
+                case 'controller_default_route':
                     break;
                 default:
                     $method = $this->routes[$this->route->name]["method"];

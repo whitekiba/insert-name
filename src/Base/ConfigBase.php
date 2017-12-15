@@ -1,6 +1,7 @@
 <?php namespace InsertName\Base;
 
 use InsertName\Factories\LogFactory;
+use InsertName\DB;
 
 /**
  * Class ConfigBase

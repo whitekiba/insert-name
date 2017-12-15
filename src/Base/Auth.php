@@ -85,7 +85,7 @@ abstract class Auth {
 	 * @return bool
 	 */
 	protected function checkSession() {
-		return (isset($_SESSION['InsertName_authenticated'])) ? false : true;
+		return (isset($_SESSION['InsertName_authenticated'])) ? true : false;
 	}
 
 	/**

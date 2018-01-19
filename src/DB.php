@@ -86,6 +86,14 @@ class DB {
     }
 
     /**
+     * @param $new_database
+     * @return bool
+     */
+    public function changeDB($new_database) {
+	    return mysqli_select_db($this->conn, $new_database);
+    }
+
+    /**
      * Methode um ganze Dateien zu importieren.
      * Da wir pro query aufruf nur eine query ausführen dürfen müssen wir das aufteilen
      * Nötig geworden für Migrationen und automatischen Import
@@ -95,7 +103,7 @@ class DB {
      */
     public function importFile($filename) {
 	    $templine = '';
-        $lines = file($filename);
+        $lines = file(__DIR__."/../".$filename);
 
         foreach ($lines as $line) {
             if (substr($line, 0, 2) == '--' || $line == '')

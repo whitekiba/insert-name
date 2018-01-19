@@ -1,5 +1,6 @@
 <?php namespace InsertName\Base;
 
+use App\Config;
 use InsertName\Factories\LogFactory;
 use InsertName\DB;
 
@@ -22,6 +23,7 @@ abstract class ConfigBase extends BaseModel implements \ArrayAccess {
 	 */
 	function __construct() {
 	    $this->config["log_path"] = __DIR__."/../../log/app.log";
+	    $this->config["env"] = "prod"; //dev or prod
 
         if ($this->db_backed) {
 			$this->_db = new DB($this->config["db_host"], $this->config["db_user"], $this->config["db_pass"], $this->config["db_name"]);
@@ -95,6 +97,18 @@ abstract class ConfigBase extends BaseModel implements \ArrayAccess {
 		}
 		return true;
 	}
+
+    /**
+     * Returns the current operating environment
+     * Define env as a key in your config to change it.
+     *
+     * defaults to prod
+     *
+     * @return string
+     */
+	public function env() {
+	    return $this->config["env"];
+    }
 
     /**
      * ArrayAccess setter

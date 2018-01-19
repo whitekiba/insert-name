@@ -2,7 +2,7 @@
 
 use Symfony\Component\Console\Application;
 use InsertName\Commands\{
-  CreateCommandCommand, CreateControllerCommand, CreateModelCommand, MigrateDbCommand, CreateInitialDbCommand
+    CreateCommandCommand, CreateControllerCommand, CreateMigration, CreateModelCommand, MigrateDbCommand, CreateInitialDbCommand
 };
 use Symfony\Component\Console\Command\Command;
 
@@ -16,6 +16,7 @@ class Console {
         $this->con->add(new CreateControllerCommand());
         $this->con->add(new CreateCommandCommand());
         $this->con->add(new CreateModelCommand());
+        $this->con->add(new CreateMigration());
 
     }
 

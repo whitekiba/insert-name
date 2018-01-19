@@ -20,23 +20,25 @@ class Application {
      * @var Controller $controller
      */
     private $request, $map, $route, $routes = array(), $routerContainer;
-    function __construct() {
+    function __construct($no_default_route = false) {
         session_start();
         
         $this->request = ServerRequestFactory::fromGlobals($_SERVER, $_GET, $_POST, $_COOKIE, $_FILES);
         $this->routerContainer = new RouterContainer();
         $this->map = $this->routerContainer->getMap();
 
-        $this->map->get("home", Config::getInstance()->get("path_prefix")."/");
-        $this->map->get("controller_default_route", Config::getInstance()->get("path_prefix")."/{controller}");
-        $this->map->get("get_default", Config::getInstance()->get("path_prefix")."/{controller}/{action}");
-        $this->map->post("post_default", Config::getInstance()->get("path_prefix")."/{controller}/{action}");
+        if (!$no_default_route) {
+            $this->map->get("home", Config::getInstance()->get("path_prefix") . "/");
+            $this->map->get("controller_default_route", Config::getInstance()->get("path_prefix") . "/{controller}");
+            $this->map->get("get_default", Config::getInstance()->get("path_prefix") . "/{controller}/{action}");
+            $this->map->post("post_default", Config::getInstance()->get("path_prefix") . "/{controller}/{action}");
+        }
     }
 
-    public function addRoute($route, $method, $class = false, $action_param = "action") {
-        if (!strpos($route, $action_param) !== false) {
+    public function addRoute($route, $class = false, $method = "get", $action_param = false) {
+        /*if (!strpos($route, $action_param) !== false) {
             return false;
-        }
+        }*/
 
         if ($class) {
             $route_name = $this->getRouteName($class);
@@ -58,10 +60,14 @@ class Application {
             return false;
         }
 
-        $this->routes[$route_name]["action_param"] = $action_param;
-        $this->routes[$route_name]["method"] = $method;
+        if ($action_param) {
+            $this->routes[$route_name]["action_param"] = $action_param;
+        }
 
-        return true;
+        $this->routes[$route_name]["method"] = $method;
+        $this->routes[$route_name]["class"] = $class;
+
+        return $route_name;
     }
 
     /**
@@ -110,9 +116,11 @@ class Application {
                     break;
                 default:
                     $method = $this->routes[$this->route->name]["method"];
-                    $action = $this->route->attributes[$this->routes[$this->route->name]["action_param"]];
-                    //dynamically call the matching method
-                    $controller->$method($action);
+                    if (isset($this->routes[$this->route->name]["action_param"])) {
+                        $action = $this->route->attributes[$this->routes[$this->route->name]["action_param"]];
+                        //dynamically call the matching method
+                        $controller->$method($action);
+                    }
             }
 
             return $controller->render();
@@ -125,13 +133,22 @@ class Application {
     }
 
     private function getControllerName($route_name) {
-        $controller_name = ltrim($route_name, "custom_");
+        $controller_name = $route_name;
+
+        if (strpos($route_name, "custom_") === 0) {
+            $controller_name = substr_replace($route_name, "", 0, 7);
+        }
+
         return $controller_name;
     }
 
     private function getRouteName($controller_name) {
-        $controller_name = rtrim($controller_name, "Controller");
-        $controller_name = substr($controller_name, strrpos($controller_name, '\\') + 1);
+        //Wir müssen \App\Controllers\ entfernen
+        $controller_name = substr_replace($controller_name, "", 0, 16);
+
+        //Noch Controller entfernen
+        $controller_name = str_replace("Controller", "", $controller_name);
+
         return "custom_".strtolower($controller_name);
     }
 }

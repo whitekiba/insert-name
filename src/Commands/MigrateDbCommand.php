@@ -14,14 +14,14 @@ class MigrateDbCommand extends Command {
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
-        $migration_prefix = "../sql/";
+        $migration_prefix = "sql/";
 
         $last_migration = "";
         $error = false;
 
         $db = DB::getInstance();
         $config = Config::getInstance();
-        $files = scandir($migration_prefix."/");
+        $files = scandir($migration_prefix);
 
         $old_timestamp = $config->get("db_timestamp");
 
@@ -35,7 +35,7 @@ class MigrateDbCommand extends Command {
                 if ($timestamp > $old_timestamp) {
                     print "Migration aktueller als Timestamp. Migriere.\n";
 
-                    if (!$db->importFile($migration_prefix . $file)) {
+                    if (!$db->importFile($migration_prefix.$file)) {
                         $last_migration = $file;
                         $error = true;
                         break;

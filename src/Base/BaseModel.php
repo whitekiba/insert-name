@@ -92,10 +92,11 @@ abstract class BaseModel {
 	    return true;
 	}
 
-	/**
-	 * Generisches erstellen
-	 * @return bool|mysqli_result
-	 */
+    /**
+     * Generisches erstellen
+     * @return bool|mysqli_result
+     * @throws FatalException
+     */
 	public function create() {
 		if ($this->_multi)
 			throw new FatalException("generisches create nicht möglich wenn multi");
@@ -123,10 +124,11 @@ abstract class BaseModel {
 		return false;
 	}
 
-	/**
-	 * generisches Speichern
-	 * @return bool|mysqli_result
-	 */
+    /**
+     * generisches Speichern
+     * @return bool|mysqli_result
+     * @throws FatalException
+     */
 	public function save() {
 		if ($this->_multi)
 			throw new FatalException("generisches create nicht möglich wenn multi");

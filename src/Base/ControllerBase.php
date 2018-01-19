@@ -170,6 +170,13 @@ abstract class ControllerBase {
     }
 
     /**
+     * @param $template
+     */
+    public function setTemplate($template) {
+        $this->template = $template;
+    }
+
+    /**
      * Eine Templatevariable setzen
      * Der checkt ob eine variable schon gesetzt ist um zu vermeiden dass aus versehen bestehende überschrieben werden
      *

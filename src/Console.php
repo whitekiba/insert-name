@@ -26,7 +26,7 @@ class Console {
      */
     public function add($obj) {
         if (is_subclass_of($obj, Command::class)) {
-            return $this->con->register($obj);
+            return $this->con->add(new $obj);
         }
         return false;
     }

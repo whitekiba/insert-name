@@ -53,6 +53,10 @@ class CreateCommandCommand extends Command {
 
         //dann die execute Methode
         $method = $class->addMethod("execute");
+        $method->addParameter('input')
+            ->setTypeHint('Symfony\Component\Console\Input\InputInterface');
+        $method->addParameter('output')
+            ->setTypeHint('Symfony\Component\Console\Output\OutputInterface');
         $method->setVisibility("protected");
 
         //Datei schreiben

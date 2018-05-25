@@ -16,7 +16,7 @@ class CreateInitialDbCommand extends Command {
         $db = DB::getInstance();
 
         if ($db->exists()) {
-            $db->importFile("../sql/db_initial.sql");
+            $db->importFile("sql/db_initial.sql");
         }
     }
 }
